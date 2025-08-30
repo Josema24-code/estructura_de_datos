@@ -2,7 +2,7 @@
 using namespace std;
 
 int main() {
-    // Declarar y asignar
+    // Declarar y asignar valores a un arreglo
     int numeros[4] = {10, 20, 30, 40};
 
     // Leer elemento en la posición 0
