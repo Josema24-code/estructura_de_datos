@@ -1,0 +1,32 @@
+using System;
+namespace recorrido_Columnas
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //se crea la matriz
+            int[,] numeros = new int[3,3];
+            //se llena la matriz
+            for (int i = 0; i < numeros.GetLength(0); i++)
+            {
+                for (int j = 0; j < numeros.GetLength(1); j++)
+                {
+                    Console.WriteLine($"Ingrese un numero para la matriz ");
+                    int num_Ingresados = Convert.ToInt32(Console.ReadLine());
+
+                        numeros[i, j] = num_Ingresados;
+                }
+                
+            }
+            //se recorre la matriz por columnas
+            for (int i = 0; i < numeros.GetLength(1); i++)
+            {
+                for (int j = 0; j < numeros.GetLength(0); j++)
+                {
+                    Console.WriteLine($"\nlos numero son {numeros[j,i]}");
+                }
+            }
+        } 
+    }
+}

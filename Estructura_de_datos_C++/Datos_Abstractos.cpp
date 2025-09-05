@@ -1,13 +1,13 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
+// Definición de la estructura Persona
 struct Persona {
     string nombre;
     string apellido;
     int edad;
 };
-
+// Función principal
 int main() {
     Persona personas[3] = 
     {
@@ -15,7 +15,7 @@ int main() {
         {"Ana", "Valdez", 25},
         {"Ramon", "Ramírez", 40}
     };
-
+// Mostrar los datos de las personas
     for (int i = 0; i < 3; i++) 
     {
         cout << "Persona " << i+1 << endl;

@@ -2,10 +2,11 @@ using System;
 
 public class Persona
 {
+    // Atributos
     public string Nombre;
     public string Apellido;
     public int Edad;
-
+// Constructor
     public Persona(string n, string a, int e)
     {
         Nombre = n;
@@ -13,18 +14,19 @@ public class Persona
         Edad = e;
     }
 }
-
+// Función principal
 class Program
 {
     static void Main(string[] args)
     {
+        // Crear un arreglo de personas
         Persona[] personas = new Persona[3]
         {
             new Persona("Jose", "Aguallo", 30),
             new Persona("Sheila", "Valdez", 25),
             new Persona("Luis", "Ramírez", 40)
         };
-
+// Mostrar los datos de las personas
         for (int i = 0; i < personas.Length; i++)
         {
             Console.WriteLine($"Persona {i + 1}");
