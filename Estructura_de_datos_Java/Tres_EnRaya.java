@@ -10,7 +10,7 @@ public class Tres_EnRaya {
         int turnos = 0;
         boolean ganador = false;
          while (turnos < 9 && !ganador) {
-
+            // Dibujar el tablero de juego
             System.out.println(" 0   1   2");
             for (int i = 0; i < 3; i++){
                 System.out.print(i + " "); 
@@ -25,16 +25,19 @@ public class Tres_EnRaya {
                     System.out.println(" ---+---+---");
                 }
             }
-        
+            // Pedir al jugador que ingrese las coordenadas donde quiere colocar su ficha
             System.out.println("Turno del jugador: " + jugador);
             System.out.println("Ingrese fila (0 - 2): ");
             int fila = Integer.parseInt(System.console().readLine());
             System.out.println("Ingrese columna (0 - 2): ");
             int columna = Integer.parseInt(System.console().readLine());
+
+            // Validar que las coordenadas sean correctas
             if (fila < 0 || fila > 2 || columna < 0 || columna > 2 || gato[fila][columna] != ' '){
             System.out.println("Movimiento invalido, intente de nuevo.");
             continue;
             }
+                // Actualizar el tablero
                 gato[fila][columna] = jugador;
                 turnos++;
                 
@@ -59,27 +62,31 @@ public class Tres_EnRaya {
                 }
                 if (count == 3) ganador = true;
 
-                // Revisar diagonal secundaria
+                // Revisar diagonal inversa
                 count = 0;
                 for (int i = 0; i < 3; i++) {
                     if (gato[i][2 - i] == jugador) count++;
                 }
                 if (count == 3) ganador = true;
 
+                // decir quien gano o si hubo empate
                 if (ganador) {
                     System.out.println("¡Jugador " + jugador + " ha ganado!");
-                    break;
-}
-            // Cambiar turno
+                }
+                else if (turnos == 9){
+                System.out.println("El juego ha terminado en empate.");
+                }
+
+                // Cambiar turno
             if (jugador == 'X'){
                 jugador = 'O';
             } else {
                 jugador = 'X';
             }
-        
-            if (!ganador) {
-                System.out.println("¡Empate!");
-            }
+                
         }
-    }   
-}
+            
+            
+    }
+ }   
+
