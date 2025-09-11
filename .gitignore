@@ -1,1 +1,20 @@
 .DS_Store
+# Ignorar archivos compilados de Java
+*.class
+bin/
+target/
+
+# Ignorar archivos específicos de IDEs
+.idea/
+.metadata/
+*.iml
+
+# Ignorar archivos de dependencias
+node_modules/
+
+# Ignorar archivos de registro
+*.log
+*.tmp
+
+# Ignorar directorios de salida de las pruebas
+test-output/
