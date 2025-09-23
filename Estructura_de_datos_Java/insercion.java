@@ -6,7 +6,7 @@ public class insercion {
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");
         }
-        insercion(arr);
+        Insercion(arr);
         System.out.println("\nDespués de ordenar:");
         for (int num : arr) {
             System.out.print(num + " ");
@@ -14,7 +14,7 @@ public class insercion {
         System.out.println();
     }
 
-    static void insercion(int[] arr) {
+    static void Insercion(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
             int numActual = arr[i];
             int j = i;
