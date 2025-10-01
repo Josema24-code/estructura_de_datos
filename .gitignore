@@ -18,3 +18,60 @@ node_modules/
 
 # Ignorar directorios de salida de las pruebas
 test-output/
+# Archivos de compilación
+bin/
+obj/
+out/
+
+# Archivos de usuario de Visual Studio
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos de dependencias (NuGet)
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Configuración local de VS
+.vs/
+*.psess
+*.vsp
+*.vspx
+*.sap
+*.sdf
+*.dbmdl
+*.bak
+*.backup
+
+# Archivos de Resharper y Rider
+_ReSharper*/
+*.DotSettings.user
+.idea/
+
+# Archivos de cache y temporales
+*.cache
+*.log
+*.tlog
+*.tmp
+*.svclog
+*.pdb
+
+# Publicaciones locales
+publish/
+*.Publish.xml
+
+# Archivos de test
+TestResults/
+*.coverage
+*.coveragexml
+
+# Otros
+*.db
+*.opendb
+*.pidb
+*.mdb
+*.ldb
