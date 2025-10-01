@@ -1,5 +1,5 @@
 using System;
-namespace insertar_numero
+namespace Estructura_de_datos_C_
 {
     class Program
     {

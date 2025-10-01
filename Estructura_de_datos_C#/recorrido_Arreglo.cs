@@ -1,6 +1,6 @@
 using System;
 
-namespace Recorrido
+namespace Estructura_de_datos_C_
 {
     class Program
     {

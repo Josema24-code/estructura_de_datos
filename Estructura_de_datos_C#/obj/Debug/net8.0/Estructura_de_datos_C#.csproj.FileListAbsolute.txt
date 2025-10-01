@@ -1,0 +1,5 @@
+/Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/obj/Debug/net8.0/Estructura_de_datos_C#.GeneratedMSBuildEditorConfig.editorconfig
+/Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/obj/Debug/net8.0/Estructura_de_datos_C#.AssemblyInfoInputs.cache
+/Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/obj/Debug/net8.0/Estructura_de_datos_C#.AssemblyInfo.cs
+/Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/obj/Debug/net8.0/Estructura_de_datos_C#.csproj.CoreCompileInputs.cache
+/Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/obj/Debug/net8.0/Estructura_de_datos_C#.sourcelink.json

@@ -10,6 +10,7 @@ let matriz = [
 let jugador = "jugador 1";
 let ficha = "X";
 let winner = false;
+let turno = 0;
 
 while (!winner) {
     console.log(" 0 1 2 3 4 5 6");
@@ -67,6 +68,12 @@ while (!winner) {
     }
     if (winner) { // Si hay un ganador, se anuncia y se termina el juego
         console.log(jugador + " ha ganado!"); 
+        break;
+    }
+    turno++;
+    if (turno === 42) { // Si se han jugado 42 turnos y no hay ganador, es un empate
+        console.log("Empate!");
+        winner = true;
         break;
     }
     // Cambiar de jugador

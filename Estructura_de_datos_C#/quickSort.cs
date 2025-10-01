@@ -1,54 +1,56 @@
 using System;
-
-class Program
+namespace Estructura_de_datos_C_
 {
-    static void QuickSort(int[] arr, int inicio, int fin)
+    class Program
     {
-        if (inicio < fin)
+        static void QuickSort(int[] arr, int inicio, int fin)
         {
-            int indicePivote = Particionar(arr, inicio, fin);
-
-            // Ordenar recursivamente izquierda y derecha
-            QuickSort(arr, inicio, indicePivote - 1);
-            QuickSort(arr, indicePivote + 1, fin);
-        }
-    }
-
-    static int Particionar(int[] arr, int inicio, int fin)
-    {
-        int pivote = arr[fin]; // Se elige el último como pivote
-        int i = inicio - 1;
-
-        for (int j = inicio; j < fin; j++)
-        {
-            if (arr[j] <= pivote)
+            if (inicio < fin)
             {
-                i++;
-                // Intercambiar arr[i] con arr[j]
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+                int indicePivote = Particionar(arr, inicio, fin);
+
+                // Ordenar recursivamente izquierda y derecha
+                QuickSort(arr, inicio, indicePivote - 1);
+                QuickSort(arr, indicePivote + 1, fin);
             }
         }
 
-        // Colocar el pivote en su posición correcta
-        int temp2 = arr[i + 1];
-        arr[i + 1] = arr[fin];
-        arr[fin] = temp2;
+        static int Particionar(int[] arr, int inicio, int fin)
+        {
+            int pivote = arr[fin]; // Se elige el último como pivote
+            int i = inicio - 1;
 
-        return i + 1;
-    }
+            for (int j = inicio; j < fin; j++)
+            {
+                if (arr[j] <= pivote)
+                {
+                    i++;
+                    // Intercambiar arr[i] con arr[j]
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
 
-    static void Main()
-    {
-        int[] numeros = { 34, 7, 23, 32, 5, 62 };
+            // Colocar el pivote en su posición correcta
+            int temp2 = arr[i + 1];
+            arr[i + 1] = arr[fin];
+            arr[fin] = temp2;
 
-        Console.WriteLine("Arreglo original:");
-        Console.WriteLine(string.Join(", ", numeros));
+            return i + 1;
+        }
 
-        QuickSort(numeros, 0, numeros.Length - 1);
+        static void Main()
+        {
+            int[] numeros = { 34, 7, 23, 32, 5, 62 };
 
-        Console.WriteLine("\nArreglo ordenado:");
-        Console.WriteLine(string.Join(", ", numeros));
+            Console.WriteLine("Arreglo original:");
+            Console.WriteLine(string.Join(", ", numeros));
+
+            QuickSort(numeros, 0, numeros.Length - 1);
+
+            Console.WriteLine("\nArreglo ordenado:");
+            Console.WriteLine(string.Join(", ", numeros));
+        }
     }
 }

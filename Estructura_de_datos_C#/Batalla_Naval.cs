@@ -1,129 +1,131 @@
 using System;
-
-class Program
+namespace Estructura_de_datos_C_
 {
-    static void Main()
+    class Program
     {
-        char[,] tablero = new char[10, 10];
-        int[] barcos = { 3, 3, 2, 4, 5 }; // tamaños de los barcos
-
-        // Inicializar tablero con agua
-        for (int i = 0; i < 10; i++)
+        static void Main()
         {
-            for (int j = 0; j < 10; j++)
-            {
-                tablero[i, j] = '-';
-            }
-        }
+            char[,] tablero = new char[10, 10];
+            int[] barcos = { 3, 3, 2, 4, 5 }; // tamaños de los barcos
 
-        // Colocar barcos
-        for (int b = 0; b < barcos.Length; b++)
-        {
-            int longitud = barcos[b];
-            bool colocado = false;
-
-            while (!colocado)
+            // Inicializar tablero con agua
+            for (int i = 0; i < 10; i++)
             {
-                // Mostrar tablero 
-                Console.Write("   ");
-                for (char c = 'A'; c <= 'J'; c++)
+                for (int j = 0; j < 10; j++)
                 {
-                    Console.Write(c + " ");
+                    tablero[i, j] = '-';
                 }
-                Console.WriteLine();
+            }
 
-                for (int i = 0; i < 10; i++)
+            // Colocar barcos
+            for (int b = 0; b < barcos.Length; b++)
+            {
+                int longitud = barcos[b];
+                bool colocado = false;
+
+                while (!colocado)
                 {
-                    Console.Write((i + 1).ToString().PadLeft(2) + " ");
-                    for (int j = 0; j < 10; j++)
+                    // Mostrar tablero 
+                    Console.Write("   ");
+                    for (char c = 'A'; c <= 'J'; c++)
                     {
-                        Console.Write(tablero[i, j] + " ");
+                        Console.Write(c + " ");
                     }
                     Console.WriteLine();
-                }
 
-                Console.WriteLine($"\nColoca un barco de {longitud} casillas.");
-                Console.Write("Ingresa la posición inicial: ");
-                string pos = Console.ReadLine().ToUpper();
-                if (pos.Length < 2)
-                {
-                    Console.WriteLine("Entrada inválida. Debes poner letra y un número ");
-                    continue; // vuelve a pedir la entrada
-                }
-
-                char letra = pos[0];
-                if (letra < 'A' || letra > 'J')
-                {
-                    Console.WriteLine("Letra inválida. Debe ser de A a J.");
-                    continue;
-                }
-
-                int fila;
-                bool filaValida = int.TryParse(pos.Substring(1), out fila);
-                if (!filaValida || fila < 1 || fila > 10)
-                {
-                    Console.WriteLine("Número de fila inválido. Debe ser del 1 al 10.");
-                    continue;
-                }
-
-                int col = letra - 'A';
-                fila = fila - 1; // para convertir a índice 0-9
-
-                Console.Write("Horizontal (H) o Vertical (V): ");
-                string orientacion = Console.ReadLine().ToUpper();
-                bool horizontal = orientacion == "H";
-
-                bool sePuede = true;
-
-                // Verificar si cabe y si no choca
-                if (horizontal)
-                {
-                    if (col + longitud > 10) sePuede = false;
-                    else
+                    for (int i = 0; i < 10; i++)
                     {
-                        for (int j = col; j < col + longitud; j++)
+                        Console.Write((i + 1).ToString().PadLeft(2) + " ");
+                        for (int j = 0; j < 10; j++)
                         {
-                            if (tablero[fila, j] != '-') sePuede = false;
+                            Console.Write(tablero[i, j] + " ");
                         }
+                        Console.WriteLine();
                     }
-                }
-                else
-                {
-                    if (fila + longitud > 10) sePuede = false;
-                    else
-                    {
-                        for (int i = fila; i < fila + longitud; i++)
-                        {
-                            if (tablero[i, col] != '-') sePuede = false;
-                        }
-                    }
-                }
 
-                // Verificar si se puede colocar
-                if (sePuede)
-                {
+                    Console.WriteLine($"\nColoca un barco de {longitud} casillas.");
+                    Console.Write("Ingresa la posición inicial: ");
+                    string pos = Console.ReadLine().ToUpper();
+                    if (pos.Length < 2)
+                    {
+                        Console.WriteLine("Entrada inválida. Debes poner letra y un número ");
+                        continue; // vuelve a pedir la entrada
+                    }
+
+                    char letra = pos[0];
+                    if (letra < 'A' || letra > 'J')
+                    {
+                        Console.WriteLine("Letra inválida. Debe ser de A a J.");
+                        continue;
+                    }
+
+                    int fila;
+                    bool filaValida = int.TryParse(pos.Substring(1), out fila);
+                    if (!filaValida || fila < 1 || fila > 10)
+                    {
+                        Console.WriteLine("Número de fila inválido. Debe ser del 1 al 10.");
+                        continue;
+                    }
+
+                    int col = letra - 'A';
+                    fila = fila - 1; // para convertir a índice 0-9
+
+                    Console.Write("Horizontal (H) o Vertical (V): ");
+                    string orientacion = Console.ReadLine().ToUpper();
+                    bool horizontal = orientacion == "H";
+
+                    bool sePuede = true;
+
+                    // Verificar si cabe y si no choca
                     if (horizontal)
                     {
-                        for (int j = col; j < col + longitud; j++)
+                        if (col + longitud > 10) sePuede = false;
+                        else
                         {
-                            tablero[fila, j] = 'B';
+                            for (int j = col; j < col + longitud; j++)
+                            {
+                                if (tablero[fila, j] != '-') sePuede = false;
+                            }
                         }
                     }
                     else
                     {
-                        for (int i = fila; i < fila + longitud; i++)
+                        if (fila + longitud > 10) sePuede = false;
+                        else
                         {
-                            tablero[i, col] = 'B';
+                            for (int i = fila; i < fila + longitud; i++)
+                            {
+                                if (tablero[i, col] != '-') sePuede = false;
+                            }
                         }
                     }
-                    colocado = true;
-                }
-                else
-                {
-                    Console.WriteLine("No se puede colocar aquí. Intenta otra vez.");
+
+                    // Verificar si se puede colocar
+                    if (sePuede)
+                    {
+                        if (horizontal)
+                        {
+                            for (int j = col; j < col + longitud; j++)
+                            {
+                                tablero[fila, j] = 'B';
+                            }
+                        }
+                        else
+                        {
+                            for (int i = fila; i < fila + longitud; i++)
+                            {
+                                tablero[i, col] = 'B';
+                            }
+                        }
+                        colocado = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("No se puede colocar aquí. Intenta otra vez.");
+                    }
                 }
             }
+            Console.WriteLine("\nTodos los barcos han sido colocados.");
         }
-        Console.WriteLine("\nTodos los barcos han sido colocados.");
     }
 }
