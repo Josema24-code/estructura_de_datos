@@ -1,7 +1,7 @@
 using System;
 namespace Estructura_de_datos_C_
 {
-    class Program
+    class insertar_numero
     {
         static void Main(string[] args)
         {

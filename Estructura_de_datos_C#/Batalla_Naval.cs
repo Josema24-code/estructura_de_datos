@@ -1,131 +1,200 @@
 using System;
-namespace Estructura_de_datos_C_
-{
-    class Program
-    {
-        static void Main()
-        {
-            char[,] tablero = new char[10, 10];
-            int[] barcos = { 3, 3, 2, 4, 5 }; // tamaños de los barcos
 
-            // Inicializar tablero con agua
-            for (int i = 0; i < 10; i++)
+class Batalla_Naval
+{
+    static void Main()
+    {
+        char[,] tablero1 = new char[10, 10];
+        char[,] tablero2 = new char[10, 10];
+        char[,] disparos1 = new char[10, 10];
+        char[,] disparos2 = new char[10, 10];
+        int[] barcos = { 3, 3, 2, 4, 5 };
+
+        InicializarTablero(tablero1);
+        InicializarTablero(tablero2);
+        InicializarTablero(disparos1);
+        InicializarTablero(disparos2);
+
+        Console.WriteLine("Jugador 1 coloca sus barcos");
+        ColocarBarcos(tablero1, barcos);
+        Console.Clear();
+
+        Console.WriteLine("Jugador 2 coloca sus barcos");
+        ColocarBarcos(tablero2, barcos);
+        Console.Clear();
+
+        while (true)
+        {
+            Console.WriteLine("Turno del Jugador 1");
+            Mostrar(disparos1);
+            Atacar(tablero2, disparos1);
+
+            if (TodosDestruidos(tablero2))
             {
-                for (int j = 0; j < 10; j++)
-                {
-                    tablero[i, j] = '-';
-                }
+                Console.WriteLine("¡Jugador 1 ganó!");
+                break;
             }
 
-            // Colocar barcos
-            for (int b = 0; b < barcos.Length; b++)
+            Console.WriteLine("Presiona una tecla para continuar...");
+            Console.ReadKey();
+            Console.Clear();
+
+            Console.WriteLine("Turno del Jugador 2");
+            Mostrar(disparos2);
+            Atacar(tablero1, disparos2);
+
+            if (TodosDestruidos(tablero1))
             {
-                int longitud = barcos[b];
-                bool colocado = false;
+                Console.WriteLine("¡Jugador 2 ganó!");
+                break;
+            }
 
-                while (!colocado)
+            Console.WriteLine("Presiona una tecla para continuar...");
+            Console.ReadKey();
+            Console.Clear();
+        }
+    }
+
+    static void InicializarTablero(char[,] t)
+    {
+        for (int i = 0; i < 10; i++)
+            for (int j = 0; j < 10; j++)
+                t[i, j] = '-';
+    }
+
+    static void Mostrar(char[,] t)
+    {
+        Console.Write("   ");
+        for (char c = 'A'; c <= 'J'; c++) Console.Write(c + " ");
+        Console.WriteLine();
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write((i + 1).ToString().PadLeft(2) + " ");
+            for (int j = 0; j < 10; j++)
+                Console.Write(t[i, j] + " ");
+            Console.WriteLine();
+        }
+    }
+
+    static void ColocarBarcos(char[,] tablero, int[] barcos)
+    {
+        for (int b = 0; b < barcos.Length; b++)
+        {
+            bool colocado = false;
+            while (!colocado)
+            {
+                Mostrar(tablero);
+                Console.WriteLine($"Coloca un barco de {barcos[b]} casillas.");
+
+                int fila = -1, col = -1;
+                while (true)
                 {
-                    // Mostrar tablero 
-                    Console.Write("   ");
-                    for (char c = 'A'; c <= 'J'; c++)
-                    {
-                        Console.Write(c + " ");
-                    }
-                    Console.WriteLine();
-
-                    for (int i = 0; i < 10; i++)
-                    {
-                        Console.Write((i + 1).ToString().PadLeft(2) + " ");
-                        for (int j = 0; j < 10; j++)
-                        {
-                            Console.Write(tablero[i, j] + " ");
-                        }
-                        Console.WriteLine();
-                    }
-
-                    Console.WriteLine($"\nColoca un barco de {longitud} casillas.");
-                    Console.Write("Ingresa la posición inicial: ");
+                    Console.Write("Ingresa la posición para colocar el barco : ");
                     string pos = Console.ReadLine().ToUpper();
-                    if (pos.Length < 2)
-                    {
-                        Console.WriteLine("Entrada inválida. Debes poner letra y un número ");
-                        continue; // vuelve a pedir la entrada
-                    }
+                    if (pos.Length < 2) continue;
 
                     char letra = pos[0];
-                    if (letra < 'A' || letra > 'J')
-                    {
-                        Console.WriteLine("Letra inválida. Debe ser de A a J.");
-                        continue;
-                    }
+                    if (letra < 'A' || letra > 'J') continue;
 
-                    int fila;
-                    bool filaValida = int.TryParse(pos.Substring(1), out fila);
-                    if (!filaValida || fila < 1 || fila > 10)
-                    {
-                        Console.WriteLine("Número de fila inválido. Debe ser del 1 al 10.");
-                        continue;
-                    }
+                    if (!int.TryParse(pos.Substring(1), out fila)) continue;
+                    fila -= 1;
+                    col = letra - 'A';
 
-                    int col = letra - 'A';
-                    fila = fila - 1; // para convertir a índice 0-9
+                    if (fila >= 0 && fila < 10) break;
+                }
 
+                bool horizontal = true;
+                while (true)
+                {
                     Console.Write("Horizontal (H) o Vertical (V): ");
                     string orientacion = Console.ReadLine().ToUpper();
-                    bool horizontal = orientacion == "H";
+                    if (orientacion == "H") { horizontal = true; break; }
+                    if (orientacion == "V") { horizontal = false; break; }
+                }
 
-                    bool sePuede = true;
+                bool sePuede = true;
+                for (int i = 0; i < barcos[b]; i++)
+                {
+                    int f = fila;
+                    int c = col;
+                    if (!horizontal) f += i; else c += i;
 
-                    // Verificar si cabe y si no choca
-                    if (horizontal)
+                    if (f >= 10 || c >= 10 || tablero[f, c] != '-')
                     {
-                        if (col + longitud > 10) sePuede = false;
-                        else
-                        {
-                            for (int j = col; j < col + longitud; j++)
-                            {
-                                if (tablero[fila, j] != '-') sePuede = false;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (fila + longitud > 10) sePuede = false;
-                        else
-                        {
-                            for (int i = fila; i < fila + longitud; i++)
-                            {
-                                if (tablero[i, col] != '-') sePuede = false;
-                            }
-                        }
-                    }
-
-                    // Verificar si se puede colocar
-                    if (sePuede)
-                    {
-                        if (horizontal)
-                        {
-                            for (int j = col; j < col + longitud; j++)
-                            {
-                                tablero[fila, j] = 'B';
-                            }
-                        }
-                        else
-                        {
-                            for (int i = fila; i < fila + longitud; i++)
-                            {
-                                tablero[i, col] = 'B';
-                            }
-                        }
-                        colocado = true;
-                    }
-                    else
-                    {
-                        Console.WriteLine("No se puede colocar aquí. Intenta otra vez.");
+                        sePuede = false;
+                        break;
                     }
                 }
+
+                if (sePuede)
+                {
+                    for (int i = 0; i < barcos[b]; i++)
+                    {
+                        int f = fila;
+                        int c = col;
+                        if (!horizontal) f += i; else c += i;
+                        tablero[f, c] = 'B';
+                    }
+                    colocado = true;
+                }
+                else
+                {
+                    Console.WriteLine("No se puede colocar ahí. Intenta otra posición.");
+                }
+
+                Console.Clear();
             }
-            Console.WriteLine("\nTodos los barcos han sido colocados.");
         }
+    }
+
+    static void Atacar(char[,] tableroEnemigo, char[,] tableroDisparos)
+    {
+        int fila = -1, col = -1;
+        while (true)
+        {
+            Console.Write("Ingresa la posición para atacar : ");
+            string pos = Console.ReadLine().ToUpper();
+            if (pos.Length < 2) continue;
+
+            char letra = pos[0];
+            if (letra < 'A' || letra > 'J') continue;
+
+            if (!int.TryParse(pos.Substring(1), out fila)) continue;
+            fila -= 1;
+            col = letra - 'A';
+
+            if (fila >= 0 && fila < 10) break;
+        }
+
+        if (tableroDisparos[fila, col] != '-')
+        {
+            Console.WriteLine("Ya atacaste ahí. Intenta otra posición.");
+            Atacar(tableroEnemigo, tableroDisparos);
+            return;
+        }
+
+        char celda = tableroEnemigo[fila, col];
+
+        if (celda == 'B')
+        {
+            Console.WriteLine("¡Impacto!");
+            tableroEnemigo[fila, col] = 'X';
+            tableroDisparos[fila, col] = 'X';
+        }
+        else
+        {
+            Console.WriteLine("Agua...");
+            tableroEnemigo[fila, col] = 'O';
+            tableroDisparos[fila, col] = 'O';
+        }
+    }
+
+    static bool TodosDestruidos(char[,] tablero)
+    {
+        for (int i = 0; i < 10; i++)
+            for (int j = 0; j < 10; j++)
+                if (tablero[i, j] == 'B')
+                    return false;
+        return true;
     }
 }

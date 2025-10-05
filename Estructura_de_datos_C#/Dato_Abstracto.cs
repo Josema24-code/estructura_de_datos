@@ -16,7 +16,7 @@ public class Persona
     }
 }
     // Función principal
-    class Program
+    class Dato_Abstracto
     {
         static void Main(string[] args)
         {

@@ -2,7 +2,7 @@ using System;
 
 namespace Estructura_de_datos_C_
 {
-    class Program
+    class REcorridoArreglo
     {
         static void Main(string[] args)
         {

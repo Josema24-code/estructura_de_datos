@@ -3,7 +3,7 @@ namespace Estructura_de_datos_C_
 {
 
 
-    class Program
+    class OrdenamientoMergeSort
     {
         static void MergeSort(int[] arr, int inicio, int fin)
         {
@@ -45,7 +45,7 @@ namespace Estructura_de_datos_C_
             while (j1 < n2) arr[k++] = derecha[j1++];
         }
 
-        static void Main()
+        static void main()
         {
             int[] numeros = { 34, 7, 56, 23, 32, 5, 62 };
             Console.WriteLine("Original: " + string.Join(", ", numeros));

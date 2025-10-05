@@ -1,7 +1,7 @@
 using System;
 namespace Estructura_de_datos_C_
 {
-    class Program
+    class Busqueda_Lineal
     {
         static void Main(string[] args)
         {

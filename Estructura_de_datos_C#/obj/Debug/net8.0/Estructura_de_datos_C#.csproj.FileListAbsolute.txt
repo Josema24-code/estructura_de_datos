@@ -3,3 +3,13 @@
 /Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/obj/Debug/net8.0/Estructura_de_datos_C#.AssemblyInfo.cs
 /Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/obj/Debug/net8.0/Estructura_de_datos_C#.csproj.CoreCompileInputs.cache
 /Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/obj/Debug/net8.0/Estructura_de_datos_C#.sourcelink.json
+/Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/bin/Debug/net8.0/Estructura_de_datos_C#
+/Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/bin/Debug/net8.0/Estructura_de_datos_C#.deps.json
+/Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/bin/Debug/net8.0/Estructura_de_datos_C#.runtimeconfig.json
+/Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/bin/Debug/net8.0/Estructura_de_datos_C#.dll
+/Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/bin/Debug/net8.0/Estructura_de_datos_C#.pdb
+/Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/obj/Debug/net8.0/Estructura_de_datos_C#.dll
+/Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/obj/Debug/net8.0/refint/Estructura_de_datos_C#.dll
+/Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/obj/Debug/net8.0/Estructura_de_datos_C#.pdb
+/Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/obj/Debug/net8.0/Estructura_de_datos_C#.genruntimeconfig.cache
+/Users/josemanuelaguallogil/Documents/Repositorio/estructura_de_datos/Estructura_de_datos_C#/obj/Debug/net8.0/ref/Estructura_de_datos_C#.dll
