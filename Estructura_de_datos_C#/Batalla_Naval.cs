@@ -4,6 +4,7 @@ class Batalla_Naval
 {
     static void Main()
     {
+        // Tableros de los jugadores y disparos
         char[,] tablero1 = new char[10, 10];
         char[,] tablero2 = new char[10, 10];
         char[,] disparos1 = new char[10, 10];
@@ -69,9 +70,9 @@ class Batalla_Naval
         Console.WriteLine();
         for (int i = 0; i < 10; i++)
         {
-            Console.Write((i + 1).ToString().PadLeft(2) + " ");
+            Console.Write((i + 1).ToString().PadLeft(2) + " "); // muestra números de fila
             for (int j = 0; j < 10; j++)
-                Console.Write(t[i, j] + " ");
+                Console.Write(t[i, j] + " "); // muestra el contenido de la celda
             Console.WriteLine();
         }
     }
@@ -97,10 +98,10 @@ class Batalla_Naval
                     if (letra < 'A' || letra > 'J') continue;
 
                     if (!int.TryParse(pos.Substring(1), out fila)) continue;
-                    fila -= 1;
-                    col = letra - 'A';
+                    fila -= 1; // Convierte a índice 0-9
+                    col = letra - 'A'; // Convierte letra a índice 0-9
 
-                    if (fila >= 0 && fila < 10) break;
+                    if (fila >= 0 && fila < 10) break; // Valida la fila
                 }
 
                 bool horizontal = true;
@@ -108,10 +109,10 @@ class Batalla_Naval
                 {
                     Console.Write("Horizontal (H) o Vertical (V): ");
                     string orientacion = Console.ReadLine().ToUpper();
-                    if (orientacion == "H") { horizontal = true; break; }
-                    if (orientacion == "V") { horizontal = false; break; }
+                    if (orientacion == "H") { horizontal = true; break; } 
+                    if (orientacion == "V") { horizontal = false; break; } 
                 }
-
+                // Verifica si el barco cabe y no se superpone
                 bool sePuede = true;
                 for (int i = 0; i < barcos[b]; i++)
                 {
@@ -125,7 +126,7 @@ class Batalla_Naval
                         break;
                     }
                 }
-
+                // Coloca el barco si es posible
                 if (sePuede)
                 {
                     for (int i = 0; i < barcos[b]; i++)
@@ -159,7 +160,7 @@ class Batalla_Naval
             char letra = pos[0];
             if (letra < 'A' || letra > 'J') continue;
 
-            if (!int.TryParse(pos.Substring(1), out fila)) continue;
+            if (!int.TryParse(pos.Substring(1), out fila)) continue; // Convierte a índice 0-9
             fila -= 1;
             col = letra - 'A';
 
@@ -188,13 +189,13 @@ class Batalla_Naval
             tableroDisparos[fila, col] = 'O';
         }
     }
-
+    // Verifica si todos los barcos han sido destruidos
     static bool TodosDestruidos(char[,] tablero)
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++) 
             for (int j = 0; j < 10; j++)
-                if (tablero[i, j] == 'B')
-                    return false;
-        return true;
+                if (tablero[i, j] == 'B') 
+                    return false; // Aún quedan barcos
+        return true; // Todos los barcos han sido destruidos
     }
 }
