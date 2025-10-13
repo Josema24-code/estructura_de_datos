@@ -12,7 +12,7 @@ const char LLAVE = 'L';
 const char TRAMPA = 'T';
 const char PUERTA = 'C';
 const char SALIDA = 'S';
-const int RADIO_VISION = 2;
+const int RADIO_VISION = 0;
 
 struct Jugador {
     int x, y;
