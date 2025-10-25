@@ -1,5 +1,5 @@
-#include <iostream>   // Para entrada y salida de texto (cout, cin)
-#include <vector>     // Para usar vectores 2D como laberinto y visibilidad
+#include <iostream>   
+#include <vector>     
 #include <cstdlib>    // Para funciones aleatorias como rand()
 #include <ctime>      // Para inicializar semilla de aleatoriedad con time()
 #include <termios.h>  // Para leer teclado sin esperar Enter 
