@@ -1,4 +1,4 @@
-
+package estructura_de_datos.Juegos;
 public class Tres_EnRaya {
     public static void main(String[] args) {
         char [][] gato = {
