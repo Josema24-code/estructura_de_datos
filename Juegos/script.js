@@ -168,7 +168,7 @@ document.addEventListener("keydown", e => {
 
 function perder() {
   clearInterval(intervalo);
-  alert("💀 Has perdido.\nPuntuación final: " + puntaje);
+  alert(" Has perdido.\nPuntuación final: " + puntaje);
   guardarPuntaje(puntaje);
   reiniciar();
 }
